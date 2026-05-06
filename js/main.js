@@ -93,23 +93,44 @@
 
   counters.forEach(el => counterObserver.observe(el));
 
-  /* --- Contact form --- */
+  /* --- Contact form → Formspree --- */
   const form = document.getElementById('contactForm');
   const successMsg = document.getElementById('formSuccess');
+  const FORMSPREE_URL = 'https://formspree.io/f/automatizacionesibiza@gmail.com';
 
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const btn = form.querySelector('.form__submit');
-      const originalText = btn.innerHTML;
-      btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="spin"><circle cx="12" cy="12" r="10" stroke-opacity=".25"/><path d="M12 2a10 10 0 0 1 10 10"/></svg> Enviando…';
+      const originalHTML = btn.innerHTML;
+      const spinnerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="spin"><circle cx="12" cy="12" r="10" stroke-opacity=".25"/><path d="M12 2a10 10 0 0 1 10 10"/></svg> Enviando…';
+
+      btn.innerHTML = spinnerHTML;
       btn.disabled = true;
 
-      setTimeout(() => {
-        form.style.display = 'none';
-        successMsg.style.display = 'block';
-      }, 1500);
+      try {
+        const response = await fetch(FORMSPREE_URL, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        } else {
+          const data = await response.json();
+          const msg = (data.errors || []).map(err => err.message).join(', ') || 'Error al enviar. Inténtalo de nuevo.';
+          alert(msg);
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+        }
+      } catch {
+        alert('Error de conexión. Por favor, inténtalo de nuevo.');
+        btn.innerHTML = originalHTML;
+        btn.disabled = false;
+      }
     });
   }
 
