@@ -96,7 +96,7 @@
   /* --- Contact form → Formspree --- */
   const form = document.getElementById('contactForm');
   const successMsg = document.getElementById('formSuccess');
-  const FORMSPREE_URL = 'https://formspree.io/f/automatizacionesibiza@gmail.com';
+  const FORMSPREE_URL = 'https://formspree.io/f/xojrlvnv';
 
   if (form) {
     form.addEventListener('submit', async (e) => {
