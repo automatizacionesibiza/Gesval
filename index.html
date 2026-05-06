@@ -491,14 +491,19 @@
           <form class="contact__form" id="contactForm" novalidate aria-label="Formulario de contacto">
             <h3 style="margin-bottom:28px;font-size:1.15rem;">Envíanos un mensaje</h3>
 
+            <!-- Formspree: asunto del email -->
+            <input type="hidden" name="_subject" value="[Gesval Web] Nueva consulta recibida" />
+            <!-- Formspree: honeypot anti-spam -->
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
             <div class="form__row">
               <div>
                 <label class="form__label" for="nombre">Nombre <span aria-hidden="true" style="color:#e53e3e">*</span></label>
-                <input class="form__input" type="text" id="nombre" name="nombre" placeholder="Tu nombre" required autocomplete="given-name" />
+                <input class="form__input" type="text" id="nombre" name="Nombre" placeholder="Tu nombre" required autocomplete="given-name" />
               </div>
               <div>
                 <label class="form__label" for="apellidos">Apellidos <span aria-hidden="true" style="color:#e53e3e">*</span></label>
-                <input class="form__input" type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos" required autocomplete="family-name" />
+                <input class="form__input" type="text" id="apellidos" name="Apellidos" placeholder="Tus apellidos" required autocomplete="family-name" />
               </div>
             </div>
 
@@ -509,35 +514,35 @@
               </div>
               <div>
                 <label class="form__label" for="telefono">Teléfono</label>
-                <input class="form__input" type="tel" id="telefono" name="telefono" placeholder="6XX XXX XXX" autocomplete="tel" />
+                <input class="form__input" type="tel" id="telefono" name="Teléfono" placeholder="6XX XXX XXX" autocomplete="tel" />
               </div>
             </div>
 
             <div class="form__group">
               <label class="form__label" for="servicio">Servicio de interés</label>
-              <select class="form__select" id="servicio" name="servicio">
+              <select class="form__select" id="servicio" name="Servicio de interés">
                 <option value="">— Selecciona un servicio —</option>
-                <option value="fiscal">Asesoría Fiscal y Tributaria</option>
-                <option value="laboral">Asesoría Laboral y RRHH</option>
-                <option value="contabilidad">Contabilidad y Gestión Financiera</option>
-                <option value="administrativa">Gestión Administrativa</option>
-                <option value="seguros">Mediación de Seguros</option>
-                <option value="otro">Otro / No sé aún</option>
+                <option value="Asesoría Fiscal y Tributaria">Asesoría Fiscal y Tributaria</option>
+                <option value="Asesoría Laboral y RRHH">Asesoría Laboral y RRHH</option>
+                <option value="Contabilidad y Gestión Financiera">Contabilidad y Gestión Financiera</option>
+                <option value="Gestión Administrativa">Gestión Administrativa</option>
+                <option value="Mediación de Seguros">Mediación de Seguros</option>
+                <option value="Otro / No sé aún">Otro / No sé aún</option>
               </select>
             </div>
 
             <div class="form__group">
               <label class="form__label" for="empresa">Empresa (opcional)</label>
-              <input class="form__input" type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa o autónomo" autocomplete="organization" />
+              <input class="form__input" type="text" id="empresa" name="Empresa" placeholder="Nombre de tu empresa o autónomo" autocomplete="organization" />
             </div>
 
             <div class="form__group form__group--full">
               <label class="form__label" for="mensaje">Mensaje <span aria-hidden="true" style="color:#e53e3e">*</span></label>
-              <textarea class="form__textarea" id="mensaje" name="mensaje" placeholder="Cuéntanos en qué podemos ayudarte…" required></textarea>
+              <textarea class="form__textarea" id="mensaje" name="Mensaje" placeholder="Cuéntanos en qué podemos ayudarte…" required></textarea>
             </div>
 
             <div class="form__check">
-              <input type="checkbox" id="privacidad" name="privacidad" required />
+              <input type="checkbox" id="privacidad" required />
               <label for="privacidad">He leído y acepto la <a href="#">política de privacidad</a> y el <a href="#">aviso legal</a>. Consiento el tratamiento de mis datos para gestionar mi consulta.</label>
             </div>
 
